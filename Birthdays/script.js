@@ -7,7 +7,6 @@ var docObjs = {
 
 // prompts the user for its name and birthdate 
 function getBirthdates(name, date){
-	var element = docObjs.lstBirthdays;
 	for(var i = 0; i < docObjs.birthdaysArr.length; i++){
 		name = prompt("Enter the name: ");
 		date = prompt("Enter the date: ");

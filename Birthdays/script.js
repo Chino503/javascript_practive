@@ -17,14 +17,12 @@ function getBirthdates(name, date){
 
 // makes new option elements displaying the name and birthdate
 function displayBirthdays () {
-	var option;
-	var optText, element, text;
+	var option, optText, element;
 	element = docObjs.lstBirthdays;
 	for(var i = 0; i < docObjs.birthdaysArr.length; i++){
 		console.log(docObjs.birthdaysArr[i]);
-		text = docObjs.birthdaysArr[i];
 		option = document.createElement('option')
-		optText = document.createTextNode(text);
+		optText = document.createTextNode(docObjs.birthdaysArr[i]);
 		option.appendChild(optText);
 		element.appendChild(option);
 	}

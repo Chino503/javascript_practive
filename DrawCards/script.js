@@ -31,31 +31,40 @@ function drawCards(num){
 		for(var i = 0; i < times ; i++){
 			randomNum = randNum();
 			// console.log(randomNum)
-			docObjs.cardsArr[i - 2] =  randomNum + 2;
-			console.log(docObjs.cardsArr[i - 2]);
+			docObjs.cardsArr[i + 2] =  randomNum + 2;
+			console.log(docObjs.cardsArr[i + 2]);
 		}
 }
 
 // display draws on the label
 function showDraws(){
+	lblClear();
 	var label, text, element, 
 	num = isNum(docObjs.txtNumInput.value),
 	the_break;
 	for(var i = 0; i < num; i++){
 		label = document.createElement('label');
-		text = document.createTextNode(docObjs.cardsArr[i - 2]);
+		text = document.createTextNode(docObjs.cardsArr[i + 2]);
 		the_break = document.createElement('br');
 		element = docObjs.the_form;
+		label.id = "lbl"
 		label.appendChild(text);
 		element.appendChild(label);
 		element.appendChild(the_break);
 	}
 }
 
+// crear the labels 
+function lblClear(){
+	var label = document.getElementById('lbl');
+	docObjs.the_form.removeChild(label);
+}
+
 // this is the click event
 docObjs.btnDrawCards.addEventListener('click', function(){
 	// isNum(docObjs.txtNumInput.value);
 	var num;
+
 	drawCards(num);
 	showDraws();
 });

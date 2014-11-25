@@ -4,6 +4,7 @@ var obj = {
 	btnHigh: document.querySelector("#btnHigh"),
 	btnLow: document.querySelector("#btnLow"),
 	lblAnswer: document.querySelector("#lblAnswer"),
+	lblTheAnswer: document.querySelector('#theAnswer'),
 	lblHighOrLow: document.querySelector("#lblHighOrLow")
 }
 
@@ -23,11 +24,8 @@ var random_number = genRandNums();
 // this functions handles the click event for the generate button
 var handleClick = function(){
 	var	lblItem,
-			txtItem,
-			counter,		
+			txtItem,	
 			brk;
-
-	counter += 1;
 
 	for (var i = 0; i < random_number.length; i++){
 		// creates new label for each array element
@@ -40,17 +38,18 @@ var handleClick = function(){
 		obj.lblAnswer.appendChild(brk);
 	}
 	console.log(random_number);
+	this.removeEventListener('click', handleClick);
 }
 
 // this functions get the high number in the random number array
 var getHigh = function() {
-	var label, text;
 	random_number.sort();
-	console.log(random_number)
-	label = document.createElement('label');
-	text = document.createTextNode(random_number[9]);
-	label.appendChild(text);
-	obj.lblHighOrLow.appendChild(label);
+	obj.lblTheAnswer.innerHTML = "The highest number is " + random_number[9];
+}
+
+var getLow = function() {
+	random_number.sort();
+	obj.lblTheAnswer.innerHTML = "The lowest number is " + random_number[0];
 }
 
 // this function is for the click events
@@ -62,3 +61,5 @@ var clickEvt = function(btn, evt){
 clickEvt(obj.btnGenNums, handleClick);
 // waits till user clicks the user clicks the show high button to run
 clickEvt(obj.btnHigh, getHigh);
+// wait till user clicks the show low button to execute program
+clickEvt(obj.btnLow, getLow);
